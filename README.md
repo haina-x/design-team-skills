@@ -1,15 +1,20 @@
-# Design UAT
+# Design Team Skills
 
-A Codex skill for comparing a live website with its Figma designs and producing an evidence-backed visual acceptance report.
+A growing collection of standalone Codex skills for product and design work. Each skill lives in its own directory and can be installed independently.
 
-## Contents
+## Skills
 
-- `SKILL.md` — skill entry point and workflow
-- `references/` — project data, evidence, review, and report guidance
-- `scripts/` — report rendering and optional image comparison helpers
-- `assets/` — report template
-- `agents/openai.yaml` — skill metadata
+| Skill | Use it for |
+| --- | --- |
+| [design-critique](design-critique/SKILL.md) | Evidence-based critique of a screen or product design. |
+| [figma-handoff](figma-handoff/SKILL.md) | Turning Figma designs into implementation-ready handoff notes. |
+| [accessibility-review](accessibility-review/SKILL.md) | Reviewing a design or live interface for accessibility issues. |
+| [design-uat](design-uat/SKILL.md) | Comparing a live website with its Figma design and reporting visual acceptance findings. |
 
-## Install
+## Install a skill
 
-Clone this repository and place the `design-uat` folder in your Codex skills directory. The skill is self-contained; report rendering uses Python's standard library. The optional region comparison helper uses Pillow when available.
+Copy the desired skill directory, including any supporting files inside it, into your Codex skills directory. For example, `design-uat` includes reference guides, report assets, and helper scripts in addition to `SKILL.md`.
+
+## Add a skill
+
+Create a new directory at the repository root with a `SKILL.md` file. Give it a matching skill name and a short description in its frontmatter. Keep any references, scripts, and assets used by that skill inside its directory, then add it to the table above.
