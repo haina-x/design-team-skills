@@ -4,11 +4,11 @@ A collection of Codex skills organized by directory. Each skill can keep its `SK
 
 ## Structure
 
-- `design-critique/` — placeholder for a future skill
-- `figma-handoff/` — placeholder for a future skill
-- `accessibility-review/` — placeholder for a future skill
+- `skill-placeholder-1/` — empty slot for a future skill
+- `skill-placeholder-2/` — empty slot for a future skill
+- `skill-placeholder-3/` — empty slot for a future skill
 - `design-uat/` — existing visual UAT skill and its supporting files
 
 ## Add a skill
 
-Create a directory with a `SKILL.md` file. Keep any supporting references, scripts, and assets inside that skill directory.
+Replace a placeholder directory with the intended skill name and add its instructions to `SKILL.md`. Keep any supporting references, scripts, and assets inside that skill directory.
