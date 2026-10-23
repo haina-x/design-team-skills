@@ -1,26 +1,108 @@
 # Design Team Skills
 
-给设计团队使用的 Codex skill 集合。这里的 skill 以设计师日常工作为入口，帮助把设计意图、已实现界面和可跟进的反馈放在同一条工作流里。
+**English is the default version. The Chinese version follows below.**
 
-## 目前可用的 skill
+## English
 
-### Design UAT
+A collection of Codex skills for design teams. The repository helps designers compare design intent with implemented interfaces and turn findings into clear, reviewable feedback.
+
+### Available skill
+
+#### Design UAT
+
+[Open `design-uat/SKILL.md`](design-uat/SKILL.md)
+
+Compare a live website with its Figma design, map relevant screens and states, capture visual evidence, and prepare a visual acceptance report. It checks implementation against the selected design baseline; it does not replace broad business-flow testing or implement the design.
+
+Typical outputs:
+
+- `report.html` with screenshots and issue evidence
+- `issue-register.csv` for sorting and tracking findings
+- `acceptance-checklist.csv` when acceptance criteria are provided
+
+The report is in English by default. Ask for another language when needed.
+
+### How designers can use it
+
+#### 1. Install the skill
+
+Download this repository from GitHub and copy the entire `design-uat` directory into your Codex skills directory. A common location is:
+
+```
+~/.codex/skills/design-uat/
+```
+
+Keep its `SKILL.md`, `agents/`, `assets/`, `references/`, and `scripts/` together. Then invoke it in a Codex conversation with `$design-uat`.
+
+#### 2. Prepare the design and page details
+
+Provide the URL of the implemented page and the Figma link. Also specify:
+
+- Which module, pages, and states to review; say explicitly if you want full-page or full-module coverage
+- The device or viewport, such as desktop at 1440 × 900
+- What matters most for this review, such as layout, spacing, truncation, form states, or responsive behavior
+- Any known differences that have already been accepted
+- The language you want for the report
+
+If the site or Figma file requires sign-in, make sure Codex can use an authorized session. Do not submit real business data just to capture a state. Inaccessible or unsafe-to-reach states will be recorded as blocked or unreviewed.
+
+#### 3. Start a review
+
+Copy and fill in this prompt:
+
+```text
+Use $design-uat to compare the implementation with the Figma design and prepare an English review draft.
+
+Implementation URL:
+Figma link:
+Review scope:
+Device or viewport:
+Focus areas:
+Accepted differences:
+```
+
+Name the specific state when you only want to review one—for example, a list, an open drawer, or an empty state. Sampling one state does not mean the whole module has passed acceptance.
+
+#### 4. Review findings and decide what happens next
+
+Review each finding with its live-page capture, design reference, and evidence. Decide whether to retain, exclude, accept as an intentional difference, merge, defer, or update the design reference. After design review, ask Codex to prepare a developer handoff; only retained items belong in the action list.
+
+The report separates reproducible visual defects, differences from the design baseline, and cases needing design clarification. Suggested priority, observation confidence, and follow-up status are recorded separately.
+
+### Scope and limitations
+
+- Findings are based on the Figma version, page states, and implementation that you provide and can access.
+- Sample data, account identity, global announcements, and expanded navigation can affect screenshots; relevant context is recorded.
+- Static screenshots cannot prove keyboard or other runtime behavior. States that could not be accessed are listed as limitations.
+- One sampled page does not establish acceptance for an entire module. The skill does not submit forms or make business changes just to capture evidence.
+
+### Future skills
+
+`skill-placeholder-1/`, `skill-placeholder-2/`, and `skill-placeholder-3/` are placeholders, not usable skills. To add a skill, rename a placeholder directory, write its `SKILL.md`, keep its references, scripts, and assets inside that directory, and update this README.
+
+## 中文
+
+这是一个面向设计团队的 Codex skill 仓库，帮助设计师对照设计意图与已实现界面，并把发现整理成清楚、可评审的反馈。
+
+### 当前可用的 skill
+
+#### Design UAT
 
 [打开 `design-uat/SKILL.md`](design-uat/SKILL.md)
 
-对照 Figma 设计与真实网页，梳理设计稿和页面状态的对应关系，截取可比较的证据，并整理成视觉验收报告。它关注界面是否符合选定的设计基线，不代替完整的业务流程测试，也不会替你修改实现。
+对照真实网页与 Figma 设计，梳理相关页面和状态，收集视觉证据，并整理视觉验收报告。它检查实现是否符合选定的设计基线，不代替广泛的业务流程测试，也不会替你实现设计。
 
-输出通常包括：
+通常会生成：
 
-- 带页面截图和问题证据的 `report.html`
+- 带截图和问题证据的 `report.html`
 - 方便筛选和跟进的 `issue-register.csv`
 - 提供验收标准时生成的 `acceptance-checklist.csv`
 
-报告默认使用英文；需要中文时，在请求里说明。
+报告默认使用英文；需要其他语言时可以在请求中说明。
 
-## 设计师怎么使用
+### 设计师怎么使用
 
-### 1. 安装 skill
+#### 1. 安装 skill
 
 从 GitHub 下载仓库，把完整的 `design-uat` 文件夹复制到 Codex 的 skills 目录。常见位置是：
 
@@ -28,26 +110,26 @@
 ~/.codex/skills/design-uat/
 ```
 
-请保留整个文件夹里的 `SKILL.md`、`agents/`、`assets/`、`references/` 和 `scripts/`。之后在 Codex 对话中用 `$design-uat` 发起评审。
+请保留 `SKILL.md`、`agents/`、`assets/`、`references/` 和 `scripts/`。之后在 Codex 对话中使用 `$design-uat` 发起评审。
 
-### 2. 准备设计和页面信息
+#### 2. 准备设计和页面信息
 
-提供你希望检查的实现页面 URL 和 Figma 链接。也请说明：
+提供实现页面的 URL 和 Figma 链接，并说明：
 
-- 要检查的模块、页面和状态；如果要检查整页或整个模块，请明确说出来
+- 要检查的模块、页面和状态；若要覆盖整页或整个模块，请明确说明
 - 设备或视口，例如桌面端 1440 × 900
-- 这次评审最关心的内容，例如布局、间距、截断、表单状态或响应式表现
-- 哪些差异是已知且接受的
+- 重点关注的内容，例如布局、间距、截断、表单状态或响应式表现
+- 已经接受的差异
 - 希望报告使用的语言
 
-如果页面或 Figma 文件需要登录，请先确保 Codex 可使用已有的授权访问。不要为了截图提交真实业务数据；无法访问或无法安全展示的状态会记录为受阻或未检查。
+如果网站或 Figma 文件需要登录，请确保 Codex 可以使用已授权的会话。不要为了截图提交真实业务数据；无法访问或不适合操作的状态会被记录为受阻或未检查。
 
-### 3. 发起评审
+#### 3. 发起评审
 
-可以复制下面的请求并填入自己的链接：
+复制下面的请求并填入信息：
 
 ```text
-请用 $design-uat 对照以下实现页面与 Figma 设计，先给我一份中文 review draft。
+请用 $design-uat 对照以下实现与 Figma 设计，先准备一份中文 review draft。
 
 实现页面：
 Figma：
@@ -57,21 +139,21 @@ Figma：
 已接受的差异：
 ```
 
-如果只想检查某个页面状态，例如列表页、打开抽屉或空状态，请在“检查范围”里写清楚。一个状态的抽样结果不会自动代表整个模块都已验收。
+如果只检查一个状态，例如列表、打开的抽屉或空状态，请明确写出。抽样一个状态不代表整个模块都已验收。
 
-### 4. 评审问题并决定后续
+#### 4. 评审问题并决定后续
 
-先查看报告中的实际页面截图、设计参考和问题证据。对每项反馈说明是保留、排除、接受为有意差异、合并、暂缓，还是需要更新设计参考。设计确认后，再让 Codex 整理给开发者的 handoff；只有保留的事项会进入后续行动清单。
+结合真实页面截图、设计参考和证据逐条查看问题，并决定保留、排除、接受为有意差异、合并、暂缓，或更新设计参考。完成设计评审后，再让 Codex 整理给开发者的 handoff；后续行动清单只包含保留的事项。
 
-问题会区分可复现的视觉缺陷、设计基线不一致和需要设计澄清的情况。优先级建议、观察把握度和后续状态会分开记录，避免把“看起来不同”直接当成已确认缺陷。
+报告会区分可复现的视觉缺陷、与设计基线的差异，以及需要设计澄清的情况。建议优先级、观察把握度和后续状态会分开记录。
 
-## 评审范围和限制
+### 范围和限制
 
-- 评审依据是你提供的 Figma 版本、页面状态和当前可访问的实现。
-- 页面示例、账号数据、全局通知和导航展开状态都可能影响截图；报告会记录相关上下文。
-- 静态截图不能证明键盘操作或其他运行时行为；未能访问的状态会作为限制记录。
-- 这项 skill 不会因为一个页面样本就判定整个模块通过，也不会擅自提交表单等真实业务变更。
+- 评审依据是你提供且能够访问的 Figma 版本、页面状态和实现。
+- 示例数据、账号身份、全局通知和展开的导航都可能影响截图；报告会记录相关上下文。
+- 静态截图不能证明键盘操作或其他运行时行为；无法访问的状态会作为限制列出。
+- 一个页面样本不能代表整个模块通过验收。skill 不会为了取证而提交表单或执行真实业务变更。
 
-## 后续 skill
+### 后续 skill
 
-`skill-placeholder-1/`、`skill-placeholder-2/` 和 `skill-placeholder-3/` 目前只是待填充的占位目录，里面的提示文件不是可调用的 skill。新增能力时，将一个占位目录改成正式名称，补上 `SKILL.md`，把专属的参考资料、脚本和素材放在该目录内，并更新本 README。
+`skill-placeholder-1/`、`skill-placeholder-2/` 和 `skill-placeholder-3/` 目前是占位目录，不是可用的 skill。新增能力时，重命名一个占位目录，编写其中的 `SKILL.md`，把专属参考资料、脚本和素材放在该目录内，并更新本 README。
