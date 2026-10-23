@@ -2,78 +2,17 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-这是一个面向设计团队的 Codex skill 仓库，帮助设计师对照设计意图与已实现界面，并把发现整理成清楚、可评审的反馈。
+本仓库收录面向设计团队的 Codex skills。目前只有 `design-uat` 可以安装；`skill-placeholder-*` 目录是占位目录，不是 skill。
 
-## 当前可用的 skill
+## 通过 Codex 安装 `design-uat`
 
-### Design UAT
-
-[打开 `design-uat/SKILL.md`](design-uat/SKILL.md)
-
-对照真实网页与 Figma 设计，梳理相关页面和状态，收集视觉证据，并整理视觉验收报告。它检查实现是否符合选定的设计基线，不代替广泛的业务流程测试，也不会替你实现设计。
-
-通常会生成：
-
-- 带截图和问题证据的 `report.html`
-- 方便筛选和跟进的 `issue-register.csv`
-- 提供验收标准时生成的 `acceptance-checklist.csv`
-
-报告默认使用英文；需要其他语言时可以在请求中说明。
-
-## 设计师怎么使用
-
-### 1. 安装 skill
-
-从 GitHub 下载仓库，把完整的 `design-uat` 文件夹复制到 Codex 的 skills 目录。常见位置是：
-
-```
-~/.codex/skills/design-uat/
-```
-
-请保留 `SKILL.md`、`agents/`、`assets/`、`references/` 和 `scripts/`。之后在 Codex 对话中使用 `$design-uat` 发起评审。
-
-### 2. 准备设计和页面信息
-
-提供实现页面的 URL 和 Figma 链接，并说明：
-
-- 要检查的模块、页面和状态；若要覆盖整页或整个模块，请明确说明
-- 设备或视口，例如桌面端 1440 × 900
-- 重点关注的内容，例如布局、间距、截断、表单状态或响应式表现
-- 已经接受的差异
-- 希望报告使用的语言
-
-如果网站或 Figma 文件需要登录，请确保 Codex 可以使用已授权的会话。不要为了截图提交真实业务数据；无法访问的状态会被记录为受阻或未检查。
-
-### 3. 发起评审
-
-复制下面的请求并填入信息：
+在 Codex 对话中请 AI 从 GitHub 文件夹安装这个 skill。复制下面的请求：
 
 ```text
-请用 $design-uat 对照以下实现与 Figma 设计，先准备一份中文 review draft。
-
-实现页面：
-Figma：
-检查范围：
-设备或视口：
-重点关注：
-已接受的差异：
+请使用 $skill-installer 安装这个 GitHub 文件夹里的 Codex skill：
+https://github.com/haina-x/design-team-skills/tree/main/design-uat
 ```
 
-如果只检查一个状态，例如列表、打开的抽屉或空状态，请明确写出。抽样一个状态不代表整个模块都已验收。
+Codex 确认安装后，从下一轮对话开始就可以使用。输入 `$design-uat` 来调用。
 
-### 4. 评审问题并决定后续
-
-结合真实页面截图、设计参考和证据逐条查看问题，并决定保留、排除、接受为有意差异、合并、暂缓，或更新设计参考。完成设计评审后，再让 Codex 整理给开发者的 handoff；后续行动清单只包含保留的事项。
-
-报告会区分可复现的视觉缺陷、与设计基线的差异，以及需要设计澄清的情况。建议优先级、观察把握度和后续状态会分开记录。
-
-## 范围和限制
-
-- 评审依据是你提供且能够访问的 Figma 版本、页面状态和实现。
-- 示例数据、账号身份、全局通知和展开的导航都可能影响截图；报告会记录相关上下文。
-- 静态截图不能证明键盘操作或其他运行时行为；无法访问的状态会作为限制列出。
-- 一个页面样本不能代表整个模块通过验收。skill 不会为了取证而提交表单或执行真实业务变更。
-
-## 后续 skill
-
-`skill-placeholder-1/`、`skill-placeholder-2/` 和 `skill-placeholder-3/` 目前是占位目录，不是可用的 skill。新增能力时，重命名一个占位目录，编写其中的 `SKILL.md`，把专属参考资料、脚本和素材放在该目录内，并更新本 README。
+如何准备评审、决定问题后续、交接给开发和复测，请看 [Design UAT 使用指南](design-uat/README.zh-CN.md)。
