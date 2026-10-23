@@ -1,14 +1,14 @@
 # Design Team Skills
 
-**English is the default version. The Chinese version follows below.**
+[English](README.md) | [简体中文](README.zh-CN.md)
 
-## English
+**English is the default version.**
 
 A collection of Codex skills for design teams. The repository helps designers compare design intent with implemented interfaces and turn findings into clear, reviewable feedback.
 
-### Available skill
+## Available skill
 
-#### Design UAT
+### Design UAT
 
 [Open `design-uat/SKILL.md`](design-uat/SKILL.md)
 
@@ -22,9 +22,9 @@ Typical outputs:
 
 The report is in English by default. Ask for another language when needed.
 
-### How designers can use it
+## How designers can use it
 
-#### 1. Install the skill
+### 1. Install the skill
 
 Download this repository from GitHub and copy the entire `design-uat` directory into your Codex skills directory. A common location is:
 
@@ -34,7 +34,7 @@ Download this repository from GitHub and copy the entire `design-uat` directory 
 
 Keep its `SKILL.md`, `agents/`, `assets/`, `references/`, and `scripts/` together. Then invoke it in a Codex conversation with `$design-uat`.
 
-#### 2. Prepare the design and page details
+### 2. Prepare the design and page details
 
 Provide the URL of the implemented page and the Figma link. Also specify:
 
@@ -44,9 +44,9 @@ Provide the URL of the implemented page and the Figma link. Also specify:
 - Any known differences that have already been accepted
 - The language you want for the report
 
-If the site or Figma file requires sign-in, make sure Codex can use an authorized session. Do not submit real business data just to capture a state. Inaccessible or unsafe-to-reach states will be recorded as blocked or unreviewed.
+If the site or Figma file requires sign-in, make sure Codex can use an authorized session. Do not submit real business data just to capture a state. Inaccessible states will be recorded as blocked or unreviewed.
 
-#### 3. Start a review
+### 3. Start a review
 
 Copy and fill in this prompt:
 
@@ -63,97 +63,19 @@ Accepted differences:
 
 Name the specific state when you only want to review one—for example, a list, an open drawer, or an empty state. Sampling one state does not mean the whole module has passed acceptance.
 
-#### 4. Review findings and decide what happens next
+### 4. Review findings and decide what happens next
 
 Review each finding with its live-page capture, design reference, and evidence. Decide whether to retain, exclude, accept as an intentional difference, merge, defer, or update the design reference. After design review, ask Codex to prepare a developer handoff; only retained items belong in the action list.
 
 The report separates reproducible visual defects, differences from the design baseline, and cases needing design clarification. Suggested priority, observation confidence, and follow-up status are recorded separately.
 
-### Scope and limitations
+## Scope and limitations
 
 - Findings are based on the Figma version, page states, and implementation that you provide and can access.
 - Sample data, account identity, global announcements, and expanded navigation can affect screenshots; relevant context is recorded.
 - Static screenshots cannot prove keyboard or other runtime behavior. States that could not be accessed are listed as limitations.
 - One sampled page does not establish acceptance for an entire module. The skill does not submit forms or make business changes just to capture evidence.
 
-### Future skills
+## Future skills
 
 `skill-placeholder-1/`, `skill-placeholder-2/`, and `skill-placeholder-3/` are placeholders, not usable skills. To add a skill, rename a placeholder directory, write its `SKILL.md`, keep its references, scripts, and assets inside that directory, and update this README.
-
-## 中文
-
-这是一个面向设计团队的 Codex skill 仓库，帮助设计师对照设计意图与已实现界面，并把发现整理成清楚、可评审的反馈。
-
-### 当前可用的 skill
-
-#### Design UAT
-
-[打开 `design-uat/SKILL.md`](design-uat/SKILL.md)
-
-对照真实网页与 Figma 设计，梳理相关页面和状态，收集视觉证据，并整理视觉验收报告。它检查实现是否符合选定的设计基线，不代替广泛的业务流程测试，也不会替你实现设计。
-
-通常会生成：
-
-- 带截图和问题证据的 `report.html`
-- 方便筛选和跟进的 `issue-register.csv`
-- 提供验收标准时生成的 `acceptance-checklist.csv`
-
-报告默认使用英文；需要其他语言时可以在请求中说明。
-
-### 设计师怎么使用
-
-#### 1. 安装 skill
-
-从 GitHub 下载仓库，把完整的 `design-uat` 文件夹复制到 Codex 的 skills 目录。常见位置是：
-
-```
-~/.codex/skills/design-uat/
-```
-
-请保留 `SKILL.md`、`agents/`、`assets/`、`references/` 和 `scripts/`。之后在 Codex 对话中使用 `$design-uat` 发起评审。
-
-#### 2. 准备设计和页面信息
-
-提供实现页面的 URL 和 Figma 链接，并说明：
-
-- 要检查的模块、页面和状态；若要覆盖整页或整个模块，请明确说明
-- 设备或视口，例如桌面端 1440 × 900
-- 重点关注的内容，例如布局、间距、截断、表单状态或响应式表现
-- 已经接受的差异
-- 希望报告使用的语言
-
-如果网站或 Figma 文件需要登录，请确保 Codex 可以使用已授权的会话。不要为了截图提交真实业务数据；无法访问或不适合操作的状态会被记录为受阻或未检查。
-
-#### 3. 发起评审
-
-复制下面的请求并填入信息：
-
-```text
-请用 $design-uat 对照以下实现与 Figma 设计，先准备一份中文 review draft。
-
-实现页面：
-Figma：
-检查范围：
-设备或视口：
-重点关注：
-已接受的差异：
-```
-
-如果只检查一个状态，例如列表、打开的抽屉或空状态，请明确写出。抽样一个状态不代表整个模块都已验收。
-
-#### 4. 评审问题并决定后续
-
-结合真实页面截图、设计参考和证据逐条查看问题，并决定保留、排除、接受为有意差异、合并、暂缓，或更新设计参考。完成设计评审后，再让 Codex 整理给开发者的 handoff；后续行动清单只包含保留的事项。
-
-报告会区分可复现的视觉缺陷、与设计基线的差异，以及需要设计澄清的情况。建议优先级、观察把握度和后续状态会分开记录。
-
-### 范围和限制
-
-- 评审依据是你提供且能够访问的 Figma 版本、页面状态和实现。
-- 示例数据、账号身份、全局通知和展开的导航都可能影响截图；报告会记录相关上下文。
-- 静态截图不能证明键盘操作或其他运行时行为；无法访问的状态会作为限制列出。
-- 一个页面样本不能代表整个模块通过验收。skill 不会为了取证而提交表单或执行真实业务变更。
-
-### 后续 skill
-
-`skill-placeholder-1/`、`skill-placeholder-2/` 和 `skill-placeholder-3/` 目前是占位目录，不是可用的 skill。新增能力时，重命名一个占位目录，编写其中的 `SKILL.md`，把专属参考资料、脚本和素材放在该目录内，并更新本 README。
