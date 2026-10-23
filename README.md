@@ -1,14 +1,77 @@
 # Design Team Skills
 
-A collection of Codex skills organized by directory. Each skill can keep its `SKILL.md` and any supporting files together.
+给设计团队使用的 Codex skill 集合。这里的 skill 以设计师日常工作为入口，帮助把设计意图、已实现界面和可跟进的反馈放在同一条工作流里。
 
-## Structure
+## 目前可用的 skill
 
-- `skill-placeholder-1/` — empty slot for a future skill
-- `skill-placeholder-2/` — empty slot for a future skill
-- `skill-placeholder-3/` — empty slot for a future skill
-- `design-uat/` — existing visual UAT skill and its supporting files
+### Design UAT
 
-## Add a skill
+[打开 `design-uat/SKILL.md`](design-uat/SKILL.md)
 
-Replace a placeholder directory with the intended skill name and add its instructions to `SKILL.md`. Keep any supporting references, scripts, and assets inside that skill directory.
+对照 Figma 设计与真实网页，梳理设计稿和页面状态的对应关系，截取可比较的证据，并整理成视觉验收报告。它关注界面是否符合选定的设计基线，不代替完整的业务流程测试，也不会替你修改实现。
+
+输出通常包括：
+
+- 带页面截图和问题证据的 `report.html`
+- 方便筛选和跟进的 `issue-register.csv`
+- 提供验收标准时生成的 `acceptance-checklist.csv`
+
+报告默认使用英文；需要中文时，在请求里说明。
+
+## 设计师怎么使用
+
+### 1. 安装 skill
+
+从 GitHub 下载仓库，把完整的 `design-uat` 文件夹复制到 Codex 的 skills 目录。常见位置是：
+
+```
+~/.codex/skills/design-uat/
+```
+
+请保留整个文件夹里的 `SKILL.md`、`agents/`、`assets/`、`references/` 和 `scripts/`。之后在 Codex 对话中用 `$design-uat` 发起评审。
+
+### 2. 准备设计和页面信息
+
+提供你希望检查的实现页面 URL 和 Figma 链接。也请说明：
+
+- 要检查的模块、页面和状态；如果要检查整页或整个模块，请明确说出来
+- 设备或视口，例如桌面端 1440 × 900
+- 这次评审最关心的内容，例如布局、间距、截断、表单状态或响应式表现
+- 哪些差异是已知且接受的
+- 希望报告使用的语言
+
+如果页面或 Figma 文件需要登录，请先确保 Codex 可使用已有的授权访问。不要为了截图提交真实业务数据；无法访问或无法安全展示的状态会记录为受阻或未检查。
+
+### 3. 发起评审
+
+可以复制下面的请求并填入自己的链接：
+
+```text
+请用 $design-uat 对照以下实现页面与 Figma 设计，先给我一份中文 review draft。
+
+实现页面：
+Figma：
+检查范围：
+设备或视口：
+重点关注：
+已接受的差异：
+```
+
+如果只想检查某个页面状态，例如列表页、打开抽屉或空状态，请在“检查范围”里写清楚。一个状态的抽样结果不会自动代表整个模块都已验收。
+
+### 4. 评审问题并决定后续
+
+先查看报告中的实际页面截图、设计参考和问题证据。对每项反馈说明是保留、排除、接受为有意差异、合并、暂缓，还是需要更新设计参考。设计确认后，再让 Codex 整理给开发者的 handoff；只有保留的事项会进入后续行动清单。
+
+问题会区分可复现的视觉缺陷、设计基线不一致和需要设计澄清的情况。优先级建议、观察把握度和后续状态会分开记录，避免把“看起来不同”直接当成已确认缺陷。
+
+## 评审范围和限制
+
+- 评审依据是你提供的 Figma 版本、页面状态和当前可访问的实现。
+- 页面示例、账号数据、全局通知和导航展开状态都可能影响截图；报告会记录相关上下文。
+- 静态截图不能证明键盘操作或其他运行时行为；未能访问的状态会作为限制记录。
+- 这项 skill 不会因为一个页面样本就判定整个模块通过，也不会擅自提交表单等真实业务变更。
+
+## 后续 skill
+
+`skill-placeholder-1/`、`skill-placeholder-2/` 和 `skill-placeholder-3/` 目前只是待填充的占位目录，里面的提示文件不是可调用的 skill。新增能力时，将一个占位目录改成正式名称，补上 `SKILL.md`，把专属的参考资料、脚本和素材放在该目录内，并更新本 README。
