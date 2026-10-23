@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design UAT"
+  short_description: "Compare live pages with Figma and report UI differences"
+  default_prompt: "Use $design-uat to review a website against its Figma design and produce an English visual UAT report."
