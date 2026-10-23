@@ -2,8 +2,6 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-**English is the default version.**
-
 A collection of Codex skills for design teams. The repository helps designers compare design intent with implemented interfaces and turn findings into clear, reviewable feedback.
 
 ## Available skill
